@@ -18,6 +18,7 @@ class ItemWidget extends StatelessWidget {
         },
         leading: Image.network(
             "https://img5.gadgetsnow.com/gd/images/products/additional/large/G201746_View_1/mobiles/smartphones/apple-iphone-12-pro-128-gb-pacific-blue-6-gb-ram-.jpg"),
+        //instead of link, item.image should have been used but it is giving error
         title: Text(item.name),
         subtitle: Text(item.desc),
         trailing: Text(
