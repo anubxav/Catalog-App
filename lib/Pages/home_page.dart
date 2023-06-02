@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
-import '../Models/catelog.dart';
-import '../Widgets/drawer.dart';
-import '../Widgets/item_widget.dart';
+import 'package:flutter_catalog/models/catalog.dart';
+import 'package:flutter_catalog/widgets/drawer.dart';
+import 'package:flutter_catalog/widgets/item_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  // ignore: library_private_types_in_public_api
+  _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  final int days = 30;
+
+  final String name = "Codepur";
+
   @override
   void initState() {
     super.initState();
@@ -26,18 +31,16 @@ class _HomePageState extends State<HomePage> {
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
     CatalogModel.items = List.from(productsData)
-        .map<Item>((item) => Item.fromMap(Item as Map<String, dynamic>))
+        .map<Item>((item) => Item.fromMap(item))
         .toList();
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    int days = 30;
-    String name = "Anubhav";
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Test App"),
+        title: const Text("Catalog App"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -68,7 +71,9 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         // ignore: sort_child_properties_last
-                        child: Image.network(item.image),
+                        child: Image.network(
+                          item.image,
+                        ),
                         footer: Container(
                           // ignore: sort_child_properties_last
                           child: Text(
