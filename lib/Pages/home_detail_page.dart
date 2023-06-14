@@ -15,7 +15,9 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       backgroundColor: MyTheme.creamColor,
       bottomNavigationBar: Container(
         color: Colors.white,
@@ -31,8 +33,8 @@ class HomeDetailPage extends StatelessWidget {
                     MaterialStateProperty.all(MyTheme.darkBluishColor),
                 shape: MaterialStateProperty.all(const StadiumBorder()),
               ),
-              child: "Buy".text.xl2.make(),
-            ).wh(100, 50)
+              child: "Add to cart".text.xl.make(),
+            ).wh(150, 50)
           ],
         ).p32(),
       ),
@@ -58,6 +60,12 @@ class HomeDetailPage extends StatelessWidget {
                       .bold
                       .make(),
                   catalog.desc.text.textStyle(context.captionStyle).xl.make(),
+                  10.heightBox,
+                  "The item shown above is an imported product from United Arab Emirates. Therefore the shipping charges has to be paid by the customer itself. The product may take upto 3-4 business weeks to arrive. Happy shopping."
+                      .text
+                      .textStyle(context.captionStyle)
+                      .make()
+                      .p16(),
                 ]).py64(),
               ),
             ))
