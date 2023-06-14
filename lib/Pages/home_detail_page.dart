@@ -18,9 +18,9 @@ class HomeDetailPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -29,8 +29,9 @@ class HomeDetailPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(MyTheme.darkBluishColor),
+                backgroundColor: MaterialStateProperty.all(Theme.of(context)
+                    .floatingActionButtonTheme
+                    .backgroundColor),
                 shape: MaterialStateProperty.all(const StadiumBorder()),
               ),
               child: "Add to cart".text.xl.make(),
@@ -52,13 +53,10 @@ class HomeDetailPage extends StatelessWidget {
               arcType: VxArcType.convey,
               edge: VxEdge.top,
               child: Container(
-                color: Colors.white,
+                color: context.cardColor,
                 width: context.screenWidth,
                 child: Column(children: [
-                  catalog.name.text.xl4
-                      .color(MyTheme.darkBluishColor)
-                      .bold
-                      .make(),
+                  catalog.name.text.xl4.color(context.primaryColor).bold.make(),
                   catalog.desc.text.textStyle(context.captionStyle).xl.make(),
                   10.heightBox,
                   "The item shown above is an imported product from United Arab Emirates. Therefore the shipping charges has to be paid by the customer itself. The product may take upto 3-4 business weeks to arrive. Happy shopping."
